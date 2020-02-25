@@ -2,26 +2,17 @@ import React, { Componen } from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Login from './src/Login';
-import Cadastro from './src/Cadastro';
-import Tab from './src/TabNavigator';
+import Perfil from './Perfil'; 
 
 const StackNavigator = createStackNavigator({
-    Login:{
-        screen:Login,
+    Perfil:{
+        screen:Perfil,
         navigationOptions:{
-            title:'SeriesMax'
+            title:'Perfil'
         }
-    },
-    Cadastro:{
-        screen:Cadastro
-    },
-    Tab:{
-        screen:Tab
     }
 }, {
     defaultNavigationOptions:{
-      header:null,
         headerStyle:{
             backgroundColor:'#6a5acd',
             height:100

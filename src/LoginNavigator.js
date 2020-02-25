@@ -2,9 +2,9 @@ import React, { Componen } from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Login from './src/Login';
-import Cadastro from './src/Cadastro';
-import Tab from './src/TabNavigator';
+import Login from './Login';
+import Cadastro from './Cadastro';
+import Tab from './TabNavigator';
 
 const StackNavigator = createStackNavigator({
     Login:{
@@ -21,7 +21,6 @@ const StackNavigator = createStackNavigator({
     }
 }, {
     defaultNavigationOptions:{
-      header:null,
         headerStyle:{
             backgroundColor:'#6a5acd',
             height:100
