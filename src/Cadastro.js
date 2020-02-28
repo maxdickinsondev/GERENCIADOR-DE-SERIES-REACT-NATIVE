@@ -13,10 +13,32 @@ export default class Login extends Component{
       this.state = {
           nome:'',
           email:'',
-          senha:''
+          senha:'',
+          foto:''
       };
 
       firebase.auth().signOut();
+
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user){
+          console.log('entrei');
+          firebase.database().ref('usuarios').child(user.uid).on('value', (snapshot) => {
+            let state = this.state;
+
+            snapshot.forEach((childItem) => {
+
+              if (childItem.val().foto == null && childItem.val().nome == null){
+                this.state.foto = '';
+                this.state.nome = '';
+              }
+              this.state.nome = childItem.val().nome;
+              this.state.foto = childItem.val().foto;
+            });
+
+            this.setState(state);
+          })
+        }
+      });
 
       this.cadastrar = this.cadastrar.bind(this);
     }
@@ -28,7 +50,8 @@ export default class Login extends Component{
             firebase.auth().onAuthStateChanged((user) => {
                 if (user){
                     firebase.database().ref('usuarios').child(user.uid).set({
-                        nome:this.state.nome
+                        nome:this.state.nome,
+                        foto:this.state.foto
                     });
 
                     this.props.navigation.goBack();

@@ -30,9 +30,10 @@ export default class Editar extends Component{
 
     remover(){
     
-        var seriesKey = this.props.navigation.getParam('item').key;
+        let seriesKey = this.props.navigation.getParam('item').key;
+        let uid = firebase.auth().currentUser.uid;
 
-        firebase.database().ref('series').child(seriesKey).remove();
+        firebase.database().ref('series').child(uid).child(seriesKey).remove();
 
         alert('Série removida com sucesso!');
         this.props.navigation.goBack();
@@ -40,19 +41,20 @@ export default class Editar extends Component{
 
     alterar(){
 
-        var serieKey = this.props.navigation.getParam('item').key;
+        let serieKey = this.props.navigation.getParam('item').key;
+        let uid = firebase.auth().currentUser.uid;
 
         let historico = firebase.database().ref('historico');
         let keyHistorico = historico.push().key; 
 
-        firebase.database().ref('series').child(serieKey).set({
+        firebase.database().ref('series').child(uid).child(serieKey).set({
             titulo:this.state.text,
             temporada:this.state.tempArray[this.state.indexTemp],
             episodio:this.state.episArray[this.state.indexEpi],
             img:this.props.navigation.getParam('item').img
         });
 
-        historico.child(keyHistorico).set({
+        historico.child(uid).child(keyHistorico).set({
             titulo:this.state.text,
             temporada:this.state.tempArray[this.state.indexTemp],
             episodio:this.state.episArray[this.state.indexEpi],

@@ -45,20 +45,23 @@ export default class HomeList extends Component{
     }
 
     salvar(){
+
+        let uid = firebase.auth().currentUser.uid;    
+
         let series = firebase.database().ref('series');
         let chave = series.push().key;
 
         let historico = firebase.database().ref('historico');
         let keyHistorico = historico.push().key;        
 
-        series.child(chave).set({
+        series.child(uid).child(chave).set({
             titulo:this.state.text,
             temporada:this.state.tempArray[this.state.indexTemp],
             episodio:this.state.episArray[this.state.indexEpi],
             img:this.state.img
         });
 
-        historico.child(keyHistorico).set({
+        historico.child(uid).child(keyHistorico).set({
             titulo:this.state.text,
             temporada:this.state.tempArray[this.state.indexTemp],
             episodio:this.state.episArray[this.state.indexEpi],

@@ -19,24 +19,30 @@ import firebase from './FirebaseConnection';
             lista:[]
         };
 
-        firebase.database().ref('historico').on('value', (snapshot) => {
-            let state = this.state;
-            state.lista = [];
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user){
+                firebase.database().ref('historico').child(user.uid).on('value', (snapshot) => {
+                    let state = this.state;
+                    state.lista = [];
+                
+                    snapshot.forEach((childItem) => {
+                    state.lista.push({
+                        key:childItem.key,
+                        titulo:childItem.val().titulo,
+                        temporada:childItem.val().temporada,
+                        episodio:childItem.val().episodio,
+                        img:childItem.val().img
+                        });
+                    });
         
-            snapshot.forEach((childItem) => {
-            state.lista.push({
-                key:childItem.key,
-                titulo:childItem.val().titulo,
-                temporada:childItem.val().temporada,
-                episodio:childItem.val().episodio,
-                img:childItem.val().img
+                    
+                    console.log(this.state.lista);
+                    this.setState(state);
                 });
-            });
-
-            
-            console.log(this.state.lista);
-            this.setState(state);
+            } 
         });
+
+        
 
         console.log(this.state.lista);
         this.remover = this.remover.bind(this);
