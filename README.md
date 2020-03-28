@@ -9,13 +9,8 @@
 # Linguagem, frameworks e ferramentas utilizadas
 
 - React Native
-- Hooks (useState, useEffect)
 - React Navigation
-- Node.js
+- Firebase Database (para armazenamento dos dados)
+- Firebase Auth (para autenticação do usuário na base de dados)
 - Expo
-- Expo/vector-icons
-- Mail Composer (para abrir o serviço de e-mail dentro do app)
-- Express
-- Axios (para as requisições com o nodejs)
-- Intl (internacionalização pra moeda brasileira)
 
