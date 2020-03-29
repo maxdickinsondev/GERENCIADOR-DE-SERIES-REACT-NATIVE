@@ -1,6 +1,9 @@
 # SeriesMax, versão mobile
 
 
+![series-max-linkedin](https://user-images.githubusercontent.com/59968647/77856969-3173d600-71d1-11ea-9af3-f03aa8a611c8.jpeg)
+
+
 ![seriesmaxfull](https://user-images.githubusercontent.com/59968647/77833684-fbc1e500-711d-11ea-9ec0-e9558e586c90.png)
 
 
