@@ -15,5 +15,5 @@
 - Firebase Auth (para autenticação do usuário na base de dados)
 - Expo
 
-Assistir vídeo no YouTube https://youtu.be/0lCug9FEGMk
+ASSISTA AO VÍDEO NO YOUTUBE: https://youtu.be/0lCug9FEGMk
 
